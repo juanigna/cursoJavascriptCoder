@@ -20,22 +20,18 @@ function escogerLibro(libro) {
   let salida = "";
   while (salida != "ESC") {
     libro = parseInt(prompt("Escoge un libro escribiendo el numero de referencia: \n 1) El principito $" +elPrincipito+"  \n 2) El perro siberiano $"+perroSiberiano+" \n 3) La odisea $"+laOdisea));
-    //SE ME OCURRIO USAR EL SWITCH YA QUE SOLO USO 3 LIBROS SOLAMENTE
-    switch (libro) {
-      case 1:
-        precioFinal += suma(elPrincipito, iva(elPrincipito));
-        break;
-      case 2:
-        precioFinal += suma(perroSiberiano, iva(perroSiberiano));
-        break;
-      case 3:
-        precioFinal += suma(laOdisea, iva(laOdisea));
-        break;
-      default:
+
+    //CONDICIONAL PARA SABER QUE LIBRO ELIJE EL USUARIO
+    if(libro==1){
+       precioFinal += suma(elPrincipito, iva(elPrincipito));
+    }else if(libro==2){
+      precioFinal += suma(perroSiberiano, iva(perroSiberiano));
+    }else if(libro==3){
+      precioFinal += suma(laOdisea, iva(laOdisea));
+    }else{
         alert("Porfavor ingrese un numero que corresponda al libro a comprar, muchas gracias!!!");
     }
-    salida = prompt("Si quieres seguir comprando solo da enter, de lo contrario escrbibe ESC");
-
+    salida = prompt("Si quieres seguir comprando solo da enter, de lo contrario escrbibe ESC")
   }
   alert("El total a pagar + IVA es: $" + precioFinal);
 }
