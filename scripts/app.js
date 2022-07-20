@@ -1,5 +1,10 @@
+
+//FUNCIONES QUE UTILIZO PARA LA SUMA Y RESTA
+
 const suma = (a, b) => a + b;
 const resta = (a, b) => a - b;
+
+//INICIACION DE LAS VARIABLES REFEREIDAS A LOS LIBROS Y SU PRECIO FINAL
 
 let elPrincipito = 1200;
 let perroSiberiano = 2200;
@@ -7,6 +12,8 @@ let laOdisea = 3500;
 let precioFinal = 0;
 const iva = x => x * 0.21;
 
+
+//FUNCION QUE LEE EL LIBRO Y TE DEVUELVE EL PRECIO + IVA
 function escogerLibro(libro) {
   alert("Bienvenido a la tienda de libros!!!");
   let salida = "";
@@ -31,4 +38,6 @@ function escogerLibro(libro) {
   alert("El total a pagar + IVA es: $" + precioFinal);
 }
 
+
+// DECLARACION DE LA FUNCION DE ARRIBA
 escogerLibro();
