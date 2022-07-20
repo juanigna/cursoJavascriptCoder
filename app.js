@@ -1,35 +1,34 @@
-//BUCLE FOR
+const suma = (a,b) => a+b;
+const resta = (a,b) => a-b;
 
-numVueltas = parseInt(prompt("Cuantas veces desea sumar? "));
-let num = 0;
-let operacion = 0;
-for(let i=1; i<=numVueltas; i++){
-    num=parseInt(prompt("Introduzca un numero a sumar: "));
-    operacion += num;
+let elPrincipito = 1200;
+let perroSiberiano = 2200;
+let laOdisea = 3500;
+let precioFinal = 0;
+const iva = x => x * 0.21;
+
+function escogerLibro(libro){
+  alert("Bienvenido a la tienda de libros!!!");
+  let salida = "";
+  while(salida != "ESC"){
+    libro = parseInt(prompt("Escogue un libro escribiendo el numero de referencia: \n 1) El principito \n 2) El perro siberiano \n 3) La odisea "));
+    switch(libro){
+    case 1:
+      precioFinal += suma(elPrincipito, iva(elPrincipito));
+      break;
+    case 2:
+      precioFinal += suma(perroSiberiano, iva(perroSiberiano));
+      break;
+    case 3:
+      precioFinal += suma(laOdisea, iva(laOdisea));
+      break;
+    default:
+      alert("Porfavor ingrese un numero que corresponda al libro a comprar, muchas gracias!!!");
+  }
+    salida = prompt("Si quieres seguir comprando solo da enter, de lo contrario escrbibe ESC");
+   
 }
-alert("La suma de los numeros da como resultado: "+operacion);
-
-//BUCLE WHILE
-
-let entrada = "";
-let productos = "";
-let producto = "";
-let cantidadProductos = 0;
-alert("Bienvenido a la seccion de agregar productos!");
-while(entrada!="ESC"){
-    producto = prompt("Ingrese el nombre del producto: ") + "\n";
-    entrada=prompt("Si desea finalizar escriba ESC, de lo contrario solo de ENTER.")
-    productos += producto;
-    cantidadProductos +=1;
-}
-alert("Usted agrego: " + cantidadProductos +" productos "+ "y los productos agregados son: \n"  + productos );
-
-
-//La misma logica de arriba utilizando for.
-
-let cantidadProductos2 = parseInt(prompt("Ingrese la cantidad de productos a agregar: "));
-let producto2="";
-for(let i = 1; i<=cantidadProductos2; i++){
-producto2+=prompt("Ingrese el producto numero " + i +" : ") + "\n";
-}
-alert("Usted agrego "+ cantidadProductos2+ " productos "+" y los productos agregados son: \n" + producto2);
+   alert("El total a pagar + IVA es: $"+ precioFinal);
+  }
+  
+escogerLibro();
