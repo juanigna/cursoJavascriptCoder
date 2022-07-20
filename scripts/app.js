@@ -18,7 +18,7 @@ function escogerLibro(libro) {
   alert("Bienvenido a la tienda de libros!!!");
   let salida = "";
   while (salida != "ESC") {
-    libro = parseInt(prompt("Escoge un libro escribiendo el numero de referencia: \n 1) El principito \n 2) El perro siberiano \n 3) La odisea "));
+    libro = parseInt(prompt("Escoge un libro escribiendo el numero de referencia: \n 1) El principito $" +elPrincipito+"  \n 2) El perro siberiano $"+perroSiberiano+" \n 3) La odisea $"+laOdisea));
     switch (libro) {
       case 1:
         precioFinal += suma(elPrincipito, iva(elPrincipito));
