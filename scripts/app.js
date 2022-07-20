@@ -41,5 +41,5 @@ function escogerLibro(libro) {
 }
 
 
-// DECLARACION DE LA FUNCION DE ARRIBA
+// INVOCACION DE LA FUNCION DE ARRIBA
 escogerLibro();

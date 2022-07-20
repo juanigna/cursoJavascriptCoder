@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap');
 @import 'reset.scss';
+@import 'variables.scss';
 @import 'header.scss';
 body {
     font-family: 'Montserrat', sans-serif;
@@ -10,9 +11,11 @@ body {
     &__title {
         text-align: center;
         margin: 1em 0;
+        font-size: $h1-size;
     }
     &__subtitle {
         text-align: center;
         margin: 1em 0;
+        font-size: $h2-size;
     }
 }
