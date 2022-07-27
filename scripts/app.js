@@ -1,46 +1,50 @@
 
-//FUNCIONES QUE UTILIZO PARA LA SUMA, RESTA y IVA
-
-const suma = (a, b) => a + b;
-const resta = (a, b) => a - b;
-const iva = x => x * 0.21;
-
-//CLASE LIBRO PARA CREAR LOS OBJETOS
-
 class Libro{
-  constructor(nombre, precio){
+  constructor(nombre, precio, autor){
     this.nombre = nombre;
     this.precio = precio;
+    this.autor = autor;
   }
   precioFinal(){
-    return suma(this.precio, iva(this.precio));
+    return this.precio *= 1.21;
   }
 }
+//DECLARACION DEL ARRAY CONTENEDOR DE LOS OBJETOS LIBROS
+const libros =[];
+
+//DECLARACION DEL ARRAY CONTENEDOR DE FUTUROS LIBROS
+const futurosLibros = [];
 
 //DECLARACION DE LOS OBJETOS USANDO LA CLASE "LIBRO"
-const elPrincipito = new Libro("El principito", 1200);
-const perroSiberiano = new Libro("El perro siberiano", 2200);
-const laOdisea = new Libro("La odisea",3500);
-//FUNCION QUE LEE EL LIBRO Y TE DEVUELVE EL PRECIO + IVA
+const elPrincipito = new Libro("El principito", 1200,"Antoine de Saint-Exupéry");
+const perroSiberiano = new Libro("El perro siberiano", 2200, "Antonio Santa Ana");
+const laOdisea = new Libro("La odisea",3500, "Homero");
+
+//AGREGO LOS OBJETOS DE LOS LIBROS AL ARRAY CONTENEDOR 
+libros.push(elPrincipito, perroSiberiano,laOdisea);
+
+
+//RECORRO EL ARRAY CONTENDOR PARA USAR LA FUNCION DEL IVA Y GUARDAR EL PRECIO FINAL
+for(const libro of libros){
+  libro.precioFinal();
+}
+
 function escogerLibro(libro) {
   alert("Bienvenido a la tienda de libros!!!");
   //VARIABLE SALIDA PARA PODER SALIR DEL CICLO
   let salida = "";
   let precioFinal = 0;
   while (salida != "ESC") {
-    libro = parseInt(prompt("Escoge un libro escribiendo el numero de referencia: \n 1) El principito $" +elPrincipito.precio+"  \n 2) El perro siberiano $"+perroSiberiano.precio+" \n 3) La odisea $"+laOdisea.precio));
+    libro = parseInt(prompt("Escoge un libro escribiendo el numero de referencia: \n 1) El principito $" +libros[0].precio+"  \n 2) El perro siberiano $"+libros[1].precio+" \n 3) La odisea $"+libros[2].precio));
     //CONDICIONAL PARA SABER QUE LIBRO ELIJE EL USUARIO
     if(libro==1){
-      precioFinal += elPrincipito.precioFinal();
-      //precioFinal += suma(elPrincipito.precio, iva(elPrincipito.precio));
+      precioFinal += libros[0].precio;
     }
     else if(libro==2){
-      precioFinal += perroSiberiano.precioFinal();
-      //precioFinal += suma(perroSiberiano.precio, iva(perroSiberiano.precio));
+      precioFinal += libros[1].precio;
     }
     else if(libro==3){
-      precioFinal += laOdisea.precioFinal();
-      //precioFinal += suma(laOdisea.precio, iva(laOdisea.precio));
+      precioFinal += libros[2].precio;
     }
     else{
       alert("Porfavor ingrese un numero que corresponda al libro a comprar, muchas gracias!!!");
@@ -50,6 +54,23 @@ function escogerLibro(libro) {
   alert("El total a pagar + IVA es: $" + precioFinal);
 }
 
+//CREO UNA FUNCION QUE SE ENCARGA DE AÑADIR UN LIBRO QUE SOLICITA EL USUARIO
+function futuroLibro(){
+  let salida = prompt("Si desea agregar un libro para que lo tengamos en cuenta solo apreta enter de lo contrario escribe ESC o esc").toUpperCase();
+  while(salida != "ESC"){
+    let nombre = prompt("Escriba el nombre del libro");
+    let autor = prompt("Escriba el autor");
+
+    //AÑADO AL ARRAY LOS FUTUROS LIBROS A TENER EN CUENTA;
+    futurosLibros.push(new Libro(nombre, 0, autor));
+    salida = prompt("Si desea agregar un libro para que lo tengamos en cuenta solo apreta enter de lo contrario escribe ESC o esc").toUpperCase();
+  }
+}
+
 
 // INVOCACION DE LA FUNCION escogerLibro
 escogerLibro();
+
+//INVOCO LA FUNCION fututroLibro
+futuroLibro();
+
