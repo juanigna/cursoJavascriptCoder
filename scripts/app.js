@@ -34,22 +34,23 @@ function escogerLibro(libro) {
   //VARIABLE SALIDA PARA PODER SALIR DEL CICLO
   let salida = "";
   let precioFinal = 0;
+  let opcion = 0;
   while (salida != "ESC") {
-    libro = parseInt(prompt("Escoge un libro escribiendo el numero de referencia: \n 1) El principito $" +libros[0].precio+"  \n 2) El perro siberiano $"+libros[1].precio+" \n 3) La odisea $"+libros[2].precio));
+    opcion = parseInt(prompt("Escoge un libro escribiendo el numero de referencia: \n 1) El principito $" +libros[0].precio+"  \n 2) El perro siberiano $"+libros[1].precio+" \n 3) La odisea $"+libros[2].precio));
     //CONDICIONAL PARA SABER QUE LIBRO ELIJE EL USUARIO
-    if(libro==1){
+    if(opcion==1){
       precioFinal += libros[0].precio;
     }
-    else if(libro==2){
+    else if(opcion==2){
       precioFinal += libros[1].precio;
     }
-    else if(libro==3){
+    else if(opcion==3){
       precioFinal += libros[2].precio;
     }
     else{
       alert("Porfavor ingrese un numero que corresponda al libro a comprar, muchas gracias!!!");
     }
-    salida = prompt("Si quieres seguir comprando solo da enter, de lo contrario escrbibe ESC").toUpperCase();
+    salida = prompt("Si quieres seguir comprando solo da enter, de lo contrario escrbibe ESC o esc").toUpperCase();
   }
   alert("El total a pagar + IVA es: $" + precioFinal);
 }
