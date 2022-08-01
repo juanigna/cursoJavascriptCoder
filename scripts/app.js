@@ -84,8 +84,13 @@ function futuroLibro(){
     salida = prompt("Si desea agregar un libro para que lo tengamos en cuenta solo apreta enter de lo contrario escribe ESC o esc").toUpperCase();
     
   }
-  //IMPRIMO EN PANTALLA LOS LIBROS AGREGADOS POR EL USUARIOa
+  if(futurosLibros.length > 0){
+ //IMPRIMO EN PANTALLA LOS LIBROS AGREGADOS POR EL USUARIOa
   imprimirDatos("Los libros que usted agrego para que tengamos en cuenta son: ",futurosLibros);
+  }else{
+    alert("Muchas gracias!!!");
+  }
+ 
 }
 
 // INVOCACION DE LA FUNCION escogerLibro
