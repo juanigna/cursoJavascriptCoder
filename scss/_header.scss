@@ -1,32 +1,28 @@
-.header__nav {
-    background-color: #ddd;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0.5em 1em;
-    &__left {
-        img {
-            max-width: 150px;
-        }
-    }
-    &__right {
-        &__list {
-            display: flex;
-            list-style: none;
-            gap: 2em;
-            font-size: 1.3em;
-            &__item {
-                transition: all 0.5s ease;
-                a {
-                    text-decoration: none;
-                    color: rgb(107, 106, 106);
+.header {
+    .navbar {
+        background-color: #fbb65e;
+        .container-fluid {
+            .navbar-brand {
+                .navbar-logo {
+                    max-width: 100px !important;
                 }
             }
-            &__item:hover a {
-                color: rgb(180, 110, 110);
-                transition: all 0.5s ease;
-                cursor: pointer;
-            }
+        }
+    }
+    &__section {
+        background-image: url('../assets/portada2.png');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        position: relative;
+        max-height: 100vh;
+        overflow: hidden;
+        margin-top: -5px;
+        &__arrow {
+            position: absolute;
+            top: 90%;
+            left: 50%;
+            transform: translate(-50%, -50%);
         }
     }
 }

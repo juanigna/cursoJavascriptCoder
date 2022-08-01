@@ -9,29 +9,168 @@
     </head>
     <body>
         <header class="header">
-            <nav class="header__nav">
-                <div class="header__nav__left">
-                    <img src="assets/logo3.png" alt="logotipo de la pagina" />
-                </div>
-                <div class="header__nav__right">
-                    <ul class="header__nav__right__list">
-                        <li class="header__nav__right__list__item">
-                            <a href="#">Home</a>
-                        </li>
-                        <li class="header__nav__right__list__item">
-                            <a href="#">About us</a>
-                        </li>
-                    </ul>
+            <nav class="navbar navbar-expand-md">
+                <div class="container-fluid">
+                    <a href="#" class="navbar-brand">
+                        <img
+                            class="navbar-logo"
+                            src="assets/logo3.png"
+                            alt="logotipo de la pagina"
+                        />
+                    </a>
+                    <button
+                        class="navbar-toggler"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#navbarNavDropdown"
+                        aria-controls="navbarNavDropdown"
+                        aria-expanded="false"
+                        aria-label="Toggle navigation"
+                    >
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div
+                        class="collapse navbar-collapse justify-content-end"
+                        id="navbarNavDropdown"
+                    >
+                        <ul class="navbar-nav align-items-center">
+                            <li class="nav-item">
+                                <a
+                                    href="#"
+                                    class="nav-link active"
+                                    aria-current="page"
+                                    >Inicio</a
+                                >
+                            </li>
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">Nosotros</a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </nav>
+            <section class="header__section w-100 vh-100">
+                <img
+                    src="./assets/arrow2.png"
+                    class="header__section__arrow"
+                    alt="flecha para bajar"
+                />
+            </section>
         </header>
         <main class="main">
-            <h1 class="main__title">LIBROS YA!</h1>
-            <h2 class="main__subtitle">
-                Libros ya es tu libreria online de confianza! Alta variedad de
-                titulos al mejor precio!!!
-            </h2>
+            <h1 class="main__title text-center">Productos!!!</h1>
+            <div class="container">
+                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                    <div class="col">
+                        <div class="card">
+                            <img
+                                src="./assets/granja.jpg"
+                                alt="libro portada"
+                                class="card-img-top"
+                            />
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    Rebelion en la granja
+                                </h5>
+                                <p class="card-text">
+                                    Rebelion en la granja, escrito por el
+                                    famosisimo George Orwell
+                                </p>
+                                <a href="#" class="btn btn-primary">Comprar</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card">
+                            <img
+                                src="./assets/1984.webp"
+                                alt="libro portada"
+                                class="card-img-top"
+                            />
+                            <div class="card-body">
+                                <h5 class="card-title">1984</h5>
+                                <p class="card-text">
+                                    1984, escrito por el famosisimo George
+                                    Orwell
+                                </p>
+                                <a href="#" class="btn btn-primary">Comprar</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card">
+                            <img
+                                src="./assets/el-principito.jpg"
+                                alt="libro portada"
+                                class="card-img-top"
+                            />
+                            <div class="card-body">
+                                <h5 class="card-title">El principito</h5>
+                                <p class="card-text">
+                                    El pricipito, escrito por el famosisimo
+                                    Antoine de Saint-Exupéry
+                                </p>
+                                <a href="#" class="btn btn-primary">Comprar</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card">
+                            <img
+                                src="./assets/mundo-feliz.jpg"
+                                alt="libro portada"
+                                class="card-img-top"
+                            />
+                            <div class="card-body">
+                                <h5 class="card-title">Un mundo feliz</h5>
+                                <p class="card-text">
+                                    Un mundo feliz, escrito por el famosisimo
+                                    Aldus Huxley
+                                </p>
+                                <a href="#" class="btn btn-primary">Comprar</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card">
+                            <img
+                                src="./assets/potter-piedra-filosofal.webp"
+                                alt="libro portada"
+                                class="card-img-top"
+                            />
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    Harry potter y la piedra filosofal
+                                </h5>
+                                <p class="card-text">
+                                    Harry potter y la piedra filosofal, escrito
+                                    por la famosisimo J. K. Rowling
+                                </p>
+                                <a href="#" class="btn btn-primary">Comprar</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card">
+                            <img
+                                src="./assets/zonas-erroneas.jpg"
+                                alt="libro portada"
+                                class="card-img-top"
+                            />
+                            <div class="card-body">
+                                <h5 class="card-title">Tus zonas erroneas</h5>
+                                <p class="card-text">
+                                    Tus zonas erroneas, escrito por el
+                                    famosisimo Wayne W. Dyer
+                                </p>
+                                <a href="#" class="btn btn-primary">Comprar</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </main>
         <script src="scripts/app.js"></script>
+        <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
     </body>
 </html>
