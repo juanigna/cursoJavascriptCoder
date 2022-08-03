@@ -84,7 +84,7 @@ function nombreBienvenida(nombre){
 }
 if(nombreUsuario!=null){
   nombreBienvenida(nombreUsuario);
-}{
+}else{
   nombreBienvenida("Que tengas buen dia!");
 }
 
