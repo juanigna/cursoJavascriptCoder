@@ -20,17 +20,17 @@ const libros =[];
 const futurosLibros = [];
 
 //DECLARACION DE LOS OBJETOS USANDO LA CLASE "LIBRO"
-const elPrincipito = new Libro("El principito", 1200,"Antoine de Saint-Exupéry",1943,"../assets/el-principito.jpg");
-const perroSiberiano = new Libro("Los ojos del perro siberiano", 2200, "Antonio Santa Ana",1998,"../assets/perro-siberiano.jpg");
+const elPrincipito = new Libro("El principito", 1200,"Antoine de Saint-Exupéry",1943,"./assets/el-principito.jpg");
+const perroSiberiano = new Libro("Los ojos del perro siberiano", 2200, "Antonio Santa Ana",1998,"./assets/perro-siberiano.jpg");
 const laOdisea = new Libro("la odisea",3500, "Homero",1800,"../assets/odisea.jpg");
 
 //AGREGO LOS OBJETOS DE LOS LIBROS AL ARRAY CONTENEDOR 
 libros.push(elPrincipito, perroSiberiano,laOdisea);
-libros.push(new Libro("1984",1900,"George Orwell",1949, "../assets/1984.webp"));
-libros.push(new Libro("Un Mundo Feliz",2100,"Aldous Huxley",1932,"../assets/mundo-feliz.jpg"));
-libros.push(new Libro("Fahrenheit 451",3000,"Ray Bradbury",1953,"../assets/fahrenheit.webp"));
-libros.push(new Libro("Rebelión en la granja",3900,"George Orwell",1945,"../assets/granja.jpg"));
-libros.push(new Libro("El cuento de la criada",4100,"Margaret Atwood",1985,"../assets/criada.jpg"));
+libros.push(new Libro("1984",1900,"George Orwell",1949, "./assets/1984.webp"));
+libros.push(new Libro("Un Mundo Feliz",2100,"Aldous Huxley",1932,"./assets/mundo-feliz.jpg"));
+libros.push(new Libro("Fahrenheit 451",3000,"Ray Bradbury",1953,"./assets/fahrenheit.webp"));
+libros.push(new Libro("Rebelión en la granja",3900,"George Orwell",1945,"./assets/granja.jpg"));
+libros.push(new Libro("El cuento de la criada",4100,"Margaret Atwood",1985,"./assets/criada.jpg"));
 
 
 
@@ -82,8 +82,12 @@ function nombreBienvenida(nombre){
   titulo.innerHTML = mensaje;
   headerSection.appendChild(titulo);
 }
+if(nombreUsuario!=null){
+  nombreBienvenida(nombreUsuario);
+}{
+  nombreBienvenida("Que tengas buen dia!");
+}
 
-nombreBienvenida(nombreUsuario);
 
 //FUNCION PARA MOSTRAR LOS DATOS DE LOS LIBROS AGREGADOS POR EL USUARIO
 function imprimirDatos(cadena, array){
@@ -124,7 +128,7 @@ function futuroLibro(){
     futurosLibros.push(new Libro(nombre,0,autor, año));
 
     //ORDENO LOS LIBROS SEGUN SU AÑO DE FORMA ASCENDENTE
-    ordenarNums(futurosLibros);
+    // ordenarNums(futurosLibros);
     salida = prompt("Si desea agregar un libro para que lo tengamos en cuenta solo apreta enter de lo contrario escribe ESC o esc").toUpperCase();
     
   }
@@ -139,7 +143,7 @@ escogerLibro();
 //INVOCO LA FUNCION fututroLibro
 futuroLibro();
 
-
+console.log(futurosLibros);
 //creo la varibale para utilizar la seccion de los futuros libros
 let futurosSeccion = document.getElementById("futuros-libros");
 //creo la tabla desde js y su cuerpo
