@@ -49,7 +49,13 @@
                     </div>
                 </div>
             </nav>
-            <section class="header__section w-100 vh-100">
+            <section
+                class="d-flex justify-content-center header__section w-100 vh-100"
+                id="header-portada"
+            >
+                <!-- <h1 class="bold fs-1 text-white text-center mt-4">
+                    Bienvenido!
+                </h1> -->
                 <img
                     src="./assets/arrow2.png"
                     class="header__section__arrow"
@@ -60,114 +66,10 @@
         <main class="main">
             <h1 class="main__title text-center">Productos!!!</h1>
             <div class="container">
-                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-                    <div class="col">
-                        <div class="card">
-                            <img
-                                src="./assets/granja.jpg"
-                                alt="libro portada"
-                                class="card-img-top"
-                            />
-                            <div class="card-body">
-                                <h5 class="card-title">
-                                    Rebelion en la granja
-                                </h5>
-                                <p class="card-text">
-                                    Rebelion en la granja, escrito por el
-                                    famosisimo George Orwell
-                                </p>
-                                <a href="#" class="btn btn-primary">Comprar</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card">
-                            <img
-                                src="./assets/1984.webp"
-                                alt="libro portada"
-                                class="card-img-top"
-                            />
-                            <div class="card-body">
-                                <h5 class="card-title">1984</h5>
-                                <p class="card-text">
-                                    1984, escrito por el famosisimo George
-                                    Orwell
-                                </p>
-                                <a href="#" class="btn btn-primary">Comprar</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card">
-                            <img
-                                src="./assets/el-principito.jpg"
-                                alt="libro portada"
-                                class="card-img-top"
-                            />
-                            <div class="card-body">
-                                <h5 class="card-title">El principito</h5>
-                                <p class="card-text">
-                                    El pricipito, escrito por el famosisimo
-                                    Antoine de Saint-Exupéry
-                                </p>
-                                <a href="#" class="btn btn-primary">Comprar</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card">
-                            <img
-                                src="./assets/mundo-feliz.jpg"
-                                alt="libro portada"
-                                class="card-img-top"
-                            />
-                            <div class="card-body">
-                                <h5 class="card-title">Un mundo feliz</h5>
-                                <p class="card-text">
-                                    Un mundo feliz, escrito por el famosisimo
-                                    Aldus Huxley
-                                </p>
-                                <a href="#" class="btn btn-primary">Comprar</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card">
-                            <img
-                                src="./assets/potter-piedra-filosofal.webp"
-                                alt="libro portada"
-                                class="card-img-top"
-                            />
-                            <div class="card-body">
-                                <h5 class="card-title">
-                                    Harry potter y la piedra filosofal
-                                </h5>
-                                <p class="card-text">
-                                    Harry potter y la piedra filosofal, escrito
-                                    por la famosisimo J. K. Rowling
-                                </p>
-                                <a href="#" class="btn btn-primary">Comprar</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card">
-                            <img
-                                src="./assets/zonas-erroneas.jpg"
-                                alt="libro portada"
-                                class="card-img-top"
-                            />
-                            <div class="card-body">
-                                <h5 class="card-title">Tus zonas erroneas</h5>
-                                <p class="card-text">
-                                    Tus zonas erroneas, escrito por el
-                                    famosisimo Wayne W. Dyer
-                                </p>
-                                <a href="#" class="btn btn-primary">Comprar</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <div
+                    class="row row-cols-1 row-cols-sm-2 row-cols-md-3 gap-3 justify-content-center"
+                    id="card-container"
+                ></div>
             </div>
         </main>
         <script src="scripts/app.js"></script>
