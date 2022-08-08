@@ -63,6 +63,9 @@
                 />
             </section>
         </header>
+        <div class="carritoAlert" id="alertCarrito">
+            <h1>Agregado al carrito!</h1>
+        </div>
         <main class="main">
             <h1 class="main__title text-center">Productos!!!</h1>
             <div class="container">
@@ -72,6 +75,35 @@
                 ></div>
                 <section class="main__libros__futuros mt-5" id="futuros-libros">
                     <h1 class="fs-2 text-center">Futuros Libros!!!</h1>
+                    <form action="" class="mb-4" id="futuros-libros">
+                        <div class="row gap-3 align-items-center">
+                            <div class="col-12">
+                                <input
+                                    type="text"
+                                    class="form-control titulo-futuro"
+                                    id="titulo-futuro"
+                                    placeholder="Titulo"
+                                />
+                            </div>
+                            <div class="col-12">
+                                <input
+                                    type="text"
+                                    class="form-control autor-futuro"
+                                    id="autor-futuro"
+                                    placeholder="Autor"
+                                />
+                            </div>
+                            <div class="col-12 align-self-center">
+                                <button type="submit" class="btn btn-primary">
+                                    Enviar!
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                    <div
+                        class="futuros-libros-presentados"
+                        id="mostrar-futuros-libros"
+                    ></div>
                 </section>
             </div>
         </main>

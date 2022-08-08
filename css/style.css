@@ -8398,6 +8398,22 @@ body {
   font-family: 'Montserrat', sans-serif;
   background-color: aliceblue; }
 
+.carritoAlert {
+  position: fixed;
+  background-color: #629bcc;
+  right: 10px;
+  top: 50px;
+  z-index: 10;
+  color: white;
+  border-radius: 10px;
+  padding: 0.5em;
+  display: none; }
+  .carritoAlert h1, .carritoAlert .h1 {
+    font-size: clamp(1rem, 3vw, 2.5rem); }
+
+.active {
+  display: block; }
+
 .main__title {
   text-align: center;
   margin: 1em 0;

@@ -1,5 +1,6 @@
 class Libro {
-    constructor(nombre, precio, autor, anio, img) {
+    constructor(id, nombre, precio, autor, anio, img) {
+        this.id = id;
         this.nombre = nombre;
         this.precio = precio;
         this.autor = autor;
@@ -11,14 +12,17 @@ class Libro {
     }
 }
 
+const carrito = [];
+
 //DECLARACION DEL ARRAY CONTENEDOR DE LOS OBJETOS LIBROS
 const libros = [];
 
 //DECLARACION DEL ARRAY CONTENEDOR DE FUTUROS LIBROS
-const futurosLibros = [];
+const proximos = [];
 
 //DECLARACION DE LOS OBJETOS USANDO LA CLASE "LIBRO"
 const elPrincipito = new Libro(
+    1,
     'El principito',
     1200,
     'Antoine de Saint-Exupéry',
@@ -26,6 +30,7 @@ const elPrincipito = new Libro(
     './assets/el-principito.jpg'
 );
 const perroSiberiano = new Libro(
+    2,
     'Los ojos del perro siberiano',
     2200,
     'Antonio Santa Ana',
@@ -33,6 +38,7 @@ const perroSiberiano = new Libro(
     './assets/perro-siberiano.jpg'
 );
 const laOdisea = new Libro(
+    3,
     'la odisea',
     3500,
     'Homero',
@@ -43,10 +49,11 @@ const laOdisea = new Libro(
 //AGREGO LOS OBJETOS DE LOS LIBROS AL ARRAY CONTENEDOR
 libros.push(elPrincipito, perroSiberiano, laOdisea);
 libros.push(
-    new Libro('1984', 1900, 'George Orwell', 1949, './assets/1984.webp')
+    new Libro(4, '1984', 1900, 'George Orwell', 1949, './assets/1984.webp')
 );
 libros.push(
     new Libro(
+        5,
         'Un Mundo Feliz',
         2100,
         'Aldous Huxley',
@@ -56,6 +63,7 @@ libros.push(
 );
 libros.push(
     new Libro(
+        6,
         'Fahrenheit 451',
         3000,
         'Ray Bradbury',
@@ -65,6 +73,7 @@ libros.push(
 );
 libros.push(
     new Libro(
+        7,
         'Rebelión en la granja',
         3900,
         'George Orwell',
@@ -74,6 +83,7 @@ libros.push(
 );
 libros.push(
     new Libro(
+        8,
         'El cuento de la criada',
         4100,
         'Margaret Atwood',
@@ -99,6 +109,7 @@ libros.sort((a, b) => a.precio - b.precio);
 
 let cards = document.getElementById('card-container');
 
+//Añado las cartas con los libros que tengo
 for (const libro of libros) {
     let card = document.createElement('div');
     card.className =
@@ -109,10 +120,14 @@ for (const libro of libros) {
       <h5 class="card-title">${libro.nombre}</h5>
       <p class="card-text">Autor: ${libro.autor}</p>
       <p class="card-text">Precio: $${libro.precio}</p>
-      <a href="#" class="btn btn-primary m-auto">Comprar!</a>
+      <a id="buyBtn${libro.id}" class="btn btn-primary m-auto">Comprar!</a>
     </div>
   `;
     cards.appendChild(card);
+    const addBtn = document.getElementById(`buyBtn${libro.id}`);
+    addBtn.addEventListener('click', () => {
+        agregarCarrito(libro.id);
+    });
 }
 
 let nombreUsuario = prompt('Hola! Cual es su nombre? ');
@@ -131,93 +146,75 @@ if (nombreUsuario != null) {
     nombreBienvenida('Que tengas buen dia!');
 }
 
-//FUNCION PARA MOSTRAR LOS DATOS DE LOS LIBROS AGREGADOS POR EL USUARIO
-function imprimirDatos(cadena, array) {
-    let mostrar = array.map(
-        (libro) =>
-            'Nombre: ' + libro.nombre + '\n' + 'Año: ' + libro.anio + '\n'
-    );
-    alert(cadena + '\n' + mostrar);
+//Tomo la alerte mediante id
+let alertaCarrito = document.getElementById('alertCarrito');
+
+//funcion que agrega al carrito y arroja una alerta
+function agregarCarrito(libroId) {
+    const libro = libros.find((libro) => libro.id === libroId);
+    carrito.push(libro);
+    carritoAlerta();
+    setTimeout(() => {
+        alertCarrito.classList.remove('active');
+    }, 1500);
+    console.log(carrito);
 }
-function escogerLibro(libro) {
-    alert('Bienvenido a la tienda de libros!!!');
-    //VARIABLE SALIDA PARA PODER SALIR DEL CICLO
-    let salida = '';
-    let precioFinal = 0;
-    let titulo;
 
-    while (salida != 'ESC') {
-        titulo = prompt(
-            'Escoge un libro escribiendo el nombre tal cual se lee: \n 1) El principito $' +
-                libros[0].precio +
-                '  \n 2) El perro siberiano $' +
-                libros[1].precio +
-                ' \n 3) La odisea $' +
-                libros[2].precio
-        ).toUpperCase();
-        let opcion = findName(libros, titulo);
+//funcion encargada de la alerta del carrito
+function carritoAlerta() {
+    alertaCarrito.classList.add('active');
+}
 
-        //CONDICIONAL PARA VERIFICAR SI EL NOMBRE DEL LIBRO INGRESADO CONCUERDA CON UNO GUARDADO
-        if (opcion != undefined) {
-            precioFinal += opcion.precio;
-        } else {
-            alert('Ingreso un nombre incorrecto');
-        }
-        salida = prompt(
-            'Si quieres seguir comprando solo da enter, de lo contrario escrbibe ESC o esc'
-        ).toUpperCase();
+//variable encargada de tomar la seccion de los proximos libros
+const proximosSeccion = document.getElementById('mostrar-futuros-libros');
+
+//Tomo el formulario
+let formLibros = document.getElementById('futuros-libros');
+
+const tituloFuturo = document.getElementById('titulo-futuro');
+const autorFuturo = document.getElementById('autor-futuro');
+
+//verifico que el usuario introdujo algo y lo guardo en proximos
+formLibros.onsubmit = (e) => {
+    e.preventDefault();
+    if (tituloFuturo.value.length == 0) {
+        alert('Ingrese un titulo valido!');
+        // } else if (!isNaN(autorFuturo) || autorFuturo == '') {
+        //     alert('Ingrese un autor valido!');
+        return;
     }
-    alert('El total a pagar + IVA es: $' + precioFinal);
-}
-
-//CREO UNA FUNCION QUE SE ENCARGA DE AÑADIR UN LIBRO QUE SOLICITA EL USUARIO
-function futuroLibro() {
-    let salida = prompt(
-        'Si desea agregar un libro para que lo tengamos en cuenta solo apreta enter de lo contrario escribe ESC o esc'
-    ).toUpperCase();
-    while (salida != 'ESC') {
-        let nombre = prompt('Escriba el nombre del libro');
-        let autor = prompt('Escriba el autor');
-        let año = parseInt(prompt('Escriba el año'));
-        //AÑADO AL ARRAY LOS FUTUROS LIBROS A TENER EN CUENTA SIN TENIENDO EN CUENTA EL PRECIO;
-        futurosLibros.push(new Libro(nombre, 0, autor, año));
-
-        //ORDENO LOS LIBROS SEGUN SU AÑO DE FORMA ASCENDENTE
-        // ordenarNums(futurosLibros);
-        salida = prompt(
-            'Si desea agregar un libro para que lo tengamos en cuenta solo apreta enter de lo contrario escribe ESC o esc'
-        ).toUpperCase();
+    if (autorFuturo.value.length == 0) {
+        alert('Ingrese un autor valido!');
+        return;
     }
-    alert('Muchas gracias!!!');
-}
 
-// INVOCACION DE LA FUNCION escogerLibro
-escogerLibro();
+    proximos.push(new Libro(0, tituloFuturo.value, 0, autorFuturo.value, 0, 0));
+    pintarProximos();
+};
 
-//INVOCO LA FUNCION fututroLibro
-futuroLibro();
+//funcion encargada de eliminar un libro
+const eliminarProximo = (libroNombre) => {
+    const libro = proximos.find((libro) => libro.nombre === libroNombre);
+    const indice = proximos.indexOf(libro);
+    proximos.splice(indice, 1);
+    pintarProximos();
+};
 
-console.log(futurosLibros);
-//creo la varibale para utilizar la seccion de los futuros libros
-let futurosSeccion = document.getElementById('futuros-libros');
-//creo la tabla desde js y su cuerpo
-let tabla = document.createElement('table');
-tabla.className = 'table table-striped';
-let tbody = document.createElement('tbody');
-
-//recorro el array de los futuros libros
-for (const libro of futurosLibros) {
-    //agrego al body de la tabla los datos de los libros
-    tbody.innerHTML += `
-      <tr>
-          <th>${libro.nombre}<th>
-          <th>${libro.autor}<th>
-          <th>${libro.anio}<th>
-      </tr>
-  `;
-}
-//añado a la tabla el cuerpo
-tabla.appendChild(tbody);
-
-//finalmente añado la tabla a la seccion
-futurosSeccion.appendChild(tabla);
+//funcion encargada de poner los libros futuros
+const pintarProximos = () => {
+    proximosSeccion.innerHTML = '';
+    proximos.forEach((libro) => {
+        let tabla = document.createElement('table');
+        tabla.className = 'table table-striped';
+        let tbody = document.createElement('tbody');
+        tbody.innerHTML = `
+            <tr>
+                <td>${libro.nombre}</td>
+                <td>${libro.autor}</td>
+                <td><button class="btn btn-danger" onclick="eliminarProximo(${libro.nombre})">Eliminar</button></td>
+            </tr>
+        `;
+        tabla.appendChild(tbody);
+        proximosSeccion.appendChild(tabla);
+    });
+};
