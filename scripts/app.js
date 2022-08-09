@@ -21,6 +21,7 @@ const libros = [];
 const proximos = [];
 
 //DECLARACION DE LOS OBJETOS USANDO LA CLASE "LIBRO"
+
 const elPrincipito = new Libro(
     1,
     'El principito',
@@ -195,6 +196,7 @@ formLibros.onsubmit = (e) => {
 //funcion encargada de eliminar un libro
 const eliminarProximo = (libroNombre) => {
     const libro = proximos.find((libro) => libro.nombre === libroNombre);
+    console.log(libro);
     const indice = proximos.indexOf(libro);
     proximos.splice(indice, 1);
     pintarProximos();
@@ -211,10 +213,14 @@ const pintarProximos = () => {
             <tr>
                 <td>${libro.nombre}</td>
                 <td>${libro.autor}</td>
-                <td><button class="btn btn-danger" onclick="eliminarProximo(${libro.nombre})">Eliminar</button></td>
+                <td><button class="btn btn-danger" id="Eliminar${libro.nombre}">Eliminar</button></td>
             </tr>
         `;
         tabla.appendChild(tbody);
         proximosSeccion.appendChild(tabla);
+        const delBtn = document.getElementById(`Eliminar${libro.nombre}`);
+        delBtn.addEventListener('click', () => {
+            eliminarProximo(libro.nombre);
+        });
     });
 };
