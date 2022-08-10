@@ -13,81 +13,86 @@ class Libro {
     }
 }
 
-//DECLARACION DEL ARRAY CONTENEDOR DE LOS OBJETOS LIBROS
-const libros = [];
-
-//DECLARACION DEL ARRAY CONTENEDOR DE FUTUROS LIBROS
-const proximos = [];
-
-//DECLARACION DE LOS OBJETOS USANDO LA CLASE "LIBRO"
-
-const elPrincipito = new Libro(
-    1,
-    'El principito',
-    1200,
-    'Antoine de Saint-Exupéry',
-    1943,
-    './assets/el-principito.jpg'
-);
-const perroSiberiano = new Libro(
-    2,
-    'Los ojos del perro siberiano',
-    2200,
-    'Antonio Santa Ana',
-    1998,
-    './assets/perro-siberiano.jpg'
-);
-const laOdisea = new Libro(
-    3,
-    'la odisea',
-    3500,
-    'Homero',
-    1800,
-    './assets/odisea.jpg'
-);
-
-//AGREGO LOS OBJETOS DE LOS LIBROS AL ARRAY CONTENEDOR
-libros.push(elPrincipito, perroSiberiano, laOdisea);
-libros.push(
-    new Libro(4, '1984', 1900, 'George Orwell', 1949, './assets/1984.webp')
-);
-libros.push(
-    new Libro(
-        5,
-        'Un Mundo Feliz',
-        2100,
-        'Aldous Huxley',
-        1932,
-        './assets/mundo-feliz.jpg'
-    )
-);
-libros.push(
-    new Libro(
-        6,
-        'Fahrenheit 451',
-        3000,
-        'Ray Bradbury',
-        1953,
-        './assets/fahrenheit.webp'
-    )
-);
-libros.push(
-    new Libro(
-        7,
-        'Rebelión en la granja',
-        3900,
-        'George Orwell',
-        1945,
-        './assets/granja.jpg'
-    )
-);
-libros.push(
-    new Libro(
-        8,
-        'El cuento de la criada',
-        4100,
-        'Margaret Atwood',
-        1985,
-        './assets/criada.jpg'
-    )
-);
+const libros = [
+    {
+        id: 1,
+        nombre: 'El principito',
+        precio: 1200,
+        autor: 'Antoine de Saint-Exupéry',
+        anio: 1943,
+        img: './assets/el-principito.jpg',
+        cantidad: 1,
+    },
+    {
+        id: 2,
+        nombre: 'Los ojos del perro siberiano',
+        precio: 2200,
+        autor: 'Antonio Santa Ana',
+        anio: 1998,
+        img: './assets/perro-siberiano.jpg',
+        cantidad: 1,
+    },
+    {
+        id: 3,
+        nombre: 'la odisea',
+        precio: 3500,
+        autor: 'Homero',
+        anio: 1800,
+        img: './assets/odisea.jpg',
+        cantidad: 1,
+    },
+    {
+        id: 4,
+        nombre: '1984',
+        precio: 1900,
+        autor: 'George Orwell',
+        anio: 1949,
+        img: './assets/1984.webp',
+        cantidad: 1,
+    },
+    {
+        id: 5,
+        nombre: 'Un Mundo Feliz',
+        precio: 2100,
+        autor: 'Aldous Huxley',
+        anio: 1932,
+        img: './assets/mundo-feliz.jpg',
+        cantidad: 1,
+    },
+    {
+        id: 6,
+        nombre: 'Fahrenheit 451',
+        precio: 3000,
+        autor: 'Ray Bradbury',
+        anio: 1953,
+        img: './assets/fahrenheit.webp',
+        cantidad: 1,
+    },
+    {
+        id: 7,
+        nombre: 'Rebelión en la granja',
+        precio: 3900,
+        autor: 'George Orwell',
+        anio: 1945,
+        img: './assets/granja.jpg',
+        cantidad: 1,
+    },
+    {
+        id: 8,
+        nombre: 'El cuento de la criada',
+        precio: 4100,
+        autor: 'Margaret Atwood',
+        anio: 1985,
+        img: './assets/criada.jpg',
+        cantidad: 1,
+    },
+    {
+        id: 9,
+        nombre: 'Padre rico Padre pobre',
+        precio: 3350,
+        autor: 'Robert Kiyosaki',
+        anio: 1997,
+        img: './assets/padrericopobre.jpg',
+        cantidad: 1,
+    },
+];
