@@ -3,6 +3,7 @@ let contendorCarrito = document.getElementById('contenedor-carrito-body');
 let carrito = [];
 let total = document.getElementById('carrito-total');
 let librosCantidad = document.getElementById('carrito-items-total');
+let vaciarBtn = document.getElementById('vaciar-carrito');
 
 document.addEventListener('DOMContentLoaded', () => {
     if (localStorage.getItem('carrito')) {
@@ -34,6 +35,16 @@ for (const libro of libros) {
 
 //Tomo la alerte mediante id
 let alertaCarrito = document.getElementById('alertCarrito');
+
+vaciarBtn.addEventListener('click', () => {
+    carrito.length = 0;
+    dibujarCarrito();
+    if (carrito.length == 0) {
+        total.innerHTML = 0;
+        librosCantidad.innerText = 0;
+    }
+    localStorage.setItem('carrito', carrito);
+});
 
 //funcion que agrega al carrito y arroja una alerta
 function agregarCarrito(libroId) {

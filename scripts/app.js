@@ -1,5 +1,3 @@
-//RECORRO EL ARRAY CONTENDOR PARA USAR LA FUNCION DEL IVA Y GUARDAR EL PRECIO FINAL
-libros.forEach((libro) => libro.precioFinal());
 //FUNCION PARA ENCOTRAR EL NOMBRE DEL LIBRO
 function findName(array, nombre) {
     return array.find((title) => title.nombre.toUpperCase() == nombre);
