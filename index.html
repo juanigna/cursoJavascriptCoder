@@ -45,6 +45,83 @@
                             <li class="nav-item">
                                 <a href="#" class="nav-link">Nosotros</a>
                             </li>
+                            <li class="nav-item">
+                                <button
+                                    type="button"
+                                    class="btn"
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#exampleModal"
+                                >
+                                    <i class="fa-solid fa-cart-shopping"></i>
+                                    <span id="carrito-items-total">0</span>
+                                </button>
+
+                                <!-- Modal -->
+                                <div
+                                    class="modal fade"
+                                    id="exampleModal"
+                                    tabindex="-1"
+                                    aria-labelledby="exampleModalLabel"
+                                    aria-hidden="true"
+                                >
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5
+                                                    class="modal-title"
+                                                    id="exampleModalLabel"
+                                                >
+                                                    Carrito de compras!
+                                                </h5>
+                                                <button
+                                                    type="button"
+                                                    class="btn-close"
+                                                    data-bs-dismiss="modal"
+                                                    aria-label="Close"
+                                                ></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <table
+                                                    class="contenedor-carrito table"
+                                                    id="contenedor-carrito"
+                                                >
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Nombre</th>
+                                                            <th>Autor</th>
+                                                            <th>Precio</th>
+                                                            <th>Cantidad</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody
+                                                        id="contenedor-carrito-body"
+                                                    ></tbody>
+                                                    <tfoot>
+                                                        <tr>
+                                                            <th>
+                                                                Total: $
+                                                                <span
+                                                                    id="carrito-total"
+                                                                    >0</span
+                                                                >
+                                                            </th>
+                                                        </tr>
+                                                    </tfoot>
+                                                </table>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button
+                                                    type="button"
+                                                    class="btn btn-secondary"
+                                                    data-bs-dismiss="modal"
+                                                >
+                                                    Cerrar
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -70,10 +147,10 @@
             <h1 class="main__title text-center">Productos!!!</h1>
             <div class="container">
                 <div
-                    class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 gap-3 justify-content-center"
+                    class="row row-cols-1 mb-4 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 gap-3 justify-content-center"
                     id="card-container"
                 ></div>
-                <section class="main__libros__futuros mt-5" id="futuros-libros">
+                <!-- <section class="main__libros__futuros mt-5" id="futuros-libros">
                     <h1 class="fs-2 text-center">Futuros Libros!!!</h1>
                     <form action="" class="mb-4" id="futuros-libros">
                         <div class="row gap-3 align-items-center">
@@ -104,12 +181,17 @@
                         class="futuros-libros-presentados"
                         id="mostrar-futuros-libros"
                     ></div>
-                </section>
+                </section> -->
             </div>
         </main>
         <script src="scripts/stockLibros.js"></script>
         <script src="scripts/app.js"></script>
+        <script src="scripts/carrito.js"></script>
 
+        <script
+            src="https://kit.fontawesome.com/0f1ff8f3f6.js"
+            crossorigin="anonymous"
+        ></script>
         <script
             src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"

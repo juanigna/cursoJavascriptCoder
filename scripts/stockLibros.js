@@ -6,13 +6,12 @@ class Libro {
         this.autor = autor;
         this.anio = anio;
         this.img = img;
+        this.cantidad = 1;
     }
     precioFinal() {
         return (this.precio *= 1.21);
     }
 }
-
-const carrito = [];
 
 //DECLARACION DEL ARRAY CONTENEDOR DE LOS OBJETOS LIBROS
 const libros = [];
