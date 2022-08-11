@@ -1,9 +1,14 @@
+//DECLARACION DE LAS VARIABLES
+
 let cards = document.getElementById('card-container');
 let contendorCarrito = document.getElementById('contenedor-carrito-body');
 let carrito = [];
 let total = document.getElementById('carrito-total');
 let librosCantidad = document.getElementById('carrito-items-total');
 let vaciarBtn = document.getElementById('vaciar-carrito');
+let alertaCarrito = document.getElementById('alertCarrito');
+
+//EVENT LISTENER CUANDO SE CARGA TODO EL CONTENIDO
 
 document.addEventListener('DOMContentLoaded', () => {
     if (localStorage.getItem('carrito')) {
@@ -14,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-//Añado las cartas con los libros que tengo
+//Añado las cards con los libros que tengo
 for (const libro of libros) {
     let card = document.createElement('div');
     card.className =
@@ -22,21 +27,18 @@ for (const libro of libros) {
     card.innerHTML = `
     <img src="${libro.img}" class="card-img-top" alt="...">
     <div class="card-body justify-content-center">
-      <h5 class="card-title">${libro.nombre}</h5>
-      <p class="card-text">Autor: ${libro.autor}</p>
-      <p class="card-text">Precio: $${libro.precio}</p>
-      <a id="buyBtn${libro.id}" class="btn btn-primary m-auto">Comprar!</a>
+        <h5 class="card-title">${libro.nombre}</h5>
+        <p class="card-text">Autor: ${libro.autor}</p>
+        <p class="card-text">Precio: $${libro.precio}</p>
+        <a id="buyBtn${libro.id}" class="btn btn-primary m-auto">Comprar!</a>
     </div>
-  `;
+    `;
     cards.appendChild(card);
     const addBtn = document.getElementById(`buyBtn${libro.id}`);
     addBtn.addEventListener('click', () => {
         agregarCarrito(libro.id);
     });
 }
-
-//Tomo la alerte mediante id
-let alertaCarrito = document.getElementById('alertCarrito');
 
 //ELIMINAR TODOS LOS ITEMS DEL CARRITO
 vaciarBtn.addEventListener('click', () => {
@@ -118,7 +120,7 @@ function dibujarCarrito() {
 
 //funcion encargada de la alerta del carrito
 function carritoAlerta() {
-    alertaCarrito.classList.add('active');
+    alertaCarrito.classList.add('active', 'alert');
 }
 
 //funcion encargada de guardar en el localStorage

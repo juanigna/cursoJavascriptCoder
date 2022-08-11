@@ -11,17 +11,12 @@ body {
 }
 .carritoAlert {
     position: fixed;
-    background-color: rgb(98, 155, 204);
+
     right: 10px;
     top: 50px;
     z-index: 10;
-    color: white;
-    border-radius: 10px;
-    padding: 0.5em;
+
     display: none;
-    h1 {
-        font-size: clamp(1rem, 3vw, 2.5rem);
-    }
 }
 .active {
     display: block;

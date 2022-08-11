@@ -8394,6 +8394,9 @@ textarea.form-control-lg {
     left: 50%;
     transform: translate(-50%, -50%); }
 
+.ocultar {
+  display: none; }
+
 .card {
   transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1); }
   .card:hover {
@@ -8406,16 +8409,10 @@ body {
 
 .carritoAlert {
   position: fixed;
-  background-color: #629bcc;
   right: 10px;
   top: 50px;
   z-index: 10;
-  color: white;
-  border-radius: 10px;
-  padding: 0.5em;
   display: none; }
-  .carritoAlert h1, .carritoAlert .h1 {
-    font-size: clamp(1rem, 3vw, 2.5rem); }
 
 .active {
   display: block; }
