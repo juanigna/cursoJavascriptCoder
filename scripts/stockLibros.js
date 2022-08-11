@@ -13,6 +13,7 @@ class Libro {
     }
 }
 
+//stock de los libros
 const libros = [
     {
         id: 1,

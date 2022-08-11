@@ -9,6 +9,8 @@ document.addEventListener('DOMContentLoaded', () => {
     if (localStorage.getItem('carrito')) {
         carrito = JSON.parse(localStorage.getItem('carrito'));
         dibujarCarrito();
+    } else {
+        carrito = [];
     }
 });
 
@@ -36,6 +38,7 @@ for (const libro of libros) {
 //Tomo la alerte mediante id
 let alertaCarrito = document.getElementById('alertCarrito');
 
+//ELIMINAR TODOS LOS ITEMS DEL CARRITO
 vaciarBtn.addEventListener('click', () => {
     carrito.length = 0;
     dibujarCarrito();
@@ -43,7 +46,7 @@ vaciarBtn.addEventListener('click', () => {
         total.innerHTML = 0;
         librosCantidad.innerText = 0;
     }
-    localStorage.setItem('carrito', carrito);
+    localSave();
 });
 
 //funcion que agrega al carrito y arroja una alerta
@@ -67,20 +70,21 @@ function agregarCarrito(libroId) {
     dibujarCarrito();
 }
 
-function eliminarDelCarrito(btnId) {
-    const libro = carrito.find((libro) => libro.id === btnId);
-    const indice = carrito.indexOf(libro);
+//FUNCION ENCARGADA DE ELIMANAR ITEM DEL CARRITO
+function eliminarDelCarrito(libroId) {
+    const libro = carrito.find((libro) => libro.id === libroId);
+    // const indice = carrito.indexOf(libro);
     if (libro.cantidad > 1) {
         libro.cantidad--;
     } else {
-        carrito.splice(indice, 1);
+        carrito = carrito.filter((libro) => libro.id != libroId);
     }
-
-    localStorage.setItem('carrito', carrito);
     if (carrito.length == 0) {
         total.innerHTML = 0;
         librosCantidad.innerText = 0;
     }
+
+    localSave();
     dibujarCarrito();
     console.log(carrito);
 }
@@ -107,7 +111,7 @@ function dibujarCarrito() {
             0
         );
 
-        localStorage.setItem('carrito', JSON.stringify(carrito));
+        localSave();
         librosCantidad.innerText = carrito.length;
     });
 }
@@ -115,4 +119,9 @@ function dibujarCarrito() {
 //funcion encargada de la alerta del carrito
 function carritoAlerta() {
     alertaCarrito.classList.add('active');
+}
+
+//funcion encargada de guardar en el localStorage
+function localSave() {
+    localStorage.setItem('carrito', JSON.stringify(carrito));
 }
