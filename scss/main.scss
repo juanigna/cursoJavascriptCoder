@@ -3,6 +3,8 @@
 @import 'reset.scss';
 @import 'variables.scss';
 @import 'header.scss';
+@import 'cards.scss';
+
 body {
     font-family: 'Montserrat', sans-serif;
     background-color: aliceblue;
@@ -11,7 +13,7 @@ body {
     position: fixed;
     background-color: rgb(98, 155, 204);
     right: 10px;
-    top: 150px;
+    top: 50px;
     z-index: 10;
     color: white;
     border-radius: 10px;
