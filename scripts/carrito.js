@@ -37,6 +37,7 @@ for (const libro of libros) {
     const addBtn = document.getElementById(`buyBtn${libro.id}`);
     addBtn.addEventListener('click', () => {
         agregarCarrito(libro.id);
+        dibujarCheck();
     });
 }
 
@@ -44,10 +45,8 @@ for (const libro of libros) {
 vaciarBtn.addEventListener('click', () => {
     carrito.length = 0;
     dibujarCarrito();
-    if (carrito.length == 0) {
-        total.innerHTML = 0;
-        librosCantidad.innerText = 0;
-    }
+    dibujarCheck();
+    resetValues();
     localSave();
 });
 
@@ -81,13 +80,11 @@ function eliminarDelCarrito(libroId) {
     } else {
         carrito = carrito.filter((libro) => libro.id != libroId);
     }
-    if (carrito.length == 0) {
-        total.innerHTML = 0;
-        librosCantidad.innerText = 0;
-    }
+    resetValues();
 
     localSave();
     dibujarCarrito();
+    dibujarCheck();
 }
 
 //Dibujar Carrito
@@ -125,4 +122,11 @@ function carritoAlerta() {
 //funcion encargada de guardar en el localStorage
 function localSave() {
     localStorage.setItem('carrito', JSON.stringify(carrito));
+}
+
+function resetValues() {
+    if (carrito.length == 0) {
+        total.innerHTML = 0;
+        librosCantidad.innerText = 0;
+    }
 }

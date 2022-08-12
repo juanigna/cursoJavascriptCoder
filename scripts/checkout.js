@@ -1,10 +1,13 @@
 const btnBuy = document.getElementById('btnBuy');
 const checkModal = document.querySelector('.modal-body');
 const formulario = document.querySelector('#check-form');
+const librosCheck = document.querySelector('#libros-check');
+
 EventsListeners();
 
 function EventsListeners() {
     btnBuy.addEventListener('click', checkOut);
+    document.addEventListener('DOMContentLoaded', dibujarCheck);
 }
 
 //Funciones
@@ -19,6 +22,13 @@ function checkOut(e) {
         console.log('wrong');
     } else {
         mostrarAlerta('Todos los datos son correctos', 'good');
+
+        carrito.length = 0;
+        console.log(carrito);
+        resetValues();
+        dibujarCheck();
+        dibujarCarrito();
+        localSave();
     }
 }
 
@@ -30,10 +40,9 @@ function mostrarAlerta(mensaje, tipo) {
     } else {
         alerta.textContent = mensaje;
         alerta.classList.add('alert-success');
-        if (carrito.length >= 0) {
-            dibujarCheck();
-        }
+        formulario.reset();
     }
+
     alerta.classList.add('alert');
     formulario.appendChild(alerta);
 
@@ -43,7 +52,19 @@ function mostrarAlerta(mensaje, tipo) {
 }
 
 function dibujarCheck() {
+    limpiarHtml(librosCheck);
     carrito.forEach((libro) => {
-        console.log(libro);
+        const row = document.createElement('div');
+        row.classList.add('mb-3', 'libroCheck');
+        row.innerHTML = `Nombre: ${libro.nombre} Precio: ${libro.precio} Cantidad: ${libro.cantidad}`;
+        librosCheck.appendChild(row);
+
+        localSave();
     });
+}
+
+function limpiarHtml(bloque) {
+    while (bloque.firstChild) {
+        bloque.removeChild(bloque.firstChild);
+    }
 }

@@ -8430,3 +8430,8 @@ body {
   text-align: center;
   margin: 1em 0;
   font-size: clamp(1em, 3vw, 2em); }
+
+.libroCheck {
+  border: 2px solid #ddd;
+  border-radius: 5px;
+  padding: 0.5em; }
