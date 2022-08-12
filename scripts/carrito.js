@@ -128,5 +128,6 @@ function resetValues() {
     if (carrito.length == 0) {
         total.innerHTML = 0;
         librosCantidad.innerText = 0;
+        totalCheck.innerText = 0;
     }
 }

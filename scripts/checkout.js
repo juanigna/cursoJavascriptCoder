@@ -2,6 +2,7 @@ const btnBuy = document.getElementById('btnBuy');
 const checkModal = document.querySelector('.modal-body');
 const formulario = document.querySelector('#check-form');
 const librosCheck = document.querySelector('#libros-check');
+const totalCheck = document.querySelector('#carrito-total-check');
 
 EventsListeners();
 
@@ -21,14 +22,18 @@ function checkOut(e) {
         mostrarAlerta('Todos los campos son necesarios', 'error');
         console.log('wrong');
     } else {
-        mostrarAlerta('Todos los datos son correctos', 'good');
-
-        carrito.length = 0;
-        console.log(carrito);
-        resetValues();
-        dibujarCheck();
-        dibujarCarrito();
-        localSave();
+        if (carrito.length > 0) {
+            mostrarAlerta('Compra con exito, muchas gracias!!!');
+            carrito.length = 0;
+            console.log(carrito);
+            resetValues();
+            dibujarCheck();
+            dibujarCarrito();
+            localSave();
+            return;
+        } else {
+            mostrarAlerta('Debes tener productos en el carrito!!!', 'error');
+        }
     }
 }
 
@@ -58,6 +63,11 @@ function dibujarCheck() {
         row.classList.add('mb-3', 'libroCheck');
         row.innerHTML = `Nombre: ${libro.nombre} Precio: ${libro.precio} Cantidad: ${libro.cantidad}`;
         librosCheck.appendChild(row);
+
+        totalCheck.innerText = carrito.reduce(
+            (acc, libro) => acc + libro.precio * libro.cantidad,
+            0
+        );
 
         localSave();
     });
