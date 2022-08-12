@@ -50,6 +50,8 @@ vaciarBtn.addEventListener('click', () => {
     localSave();
 });
 
+//FUNCIONES
+
 //funcion que agrega al carrito y arroja una alerta
 function agregarCarrito(libroId) {
     const existe = carrito.some((libro) => libro.id == libroId);
@@ -64,10 +66,32 @@ function agregarCarrito(libroId) {
         carrito.push(libro);
     }
 
-    carritoAlerta();
-    setTimeout(() => {
-        alertCarrito.classList.remove('active');
-    }, 1500);
+    swal({
+        title: '¡Producto agregado!',
+        text: `Agregado al carrito de compra.`,
+        icon: 'success',
+        buttons: {
+            cerrar: {
+                text: 'Cerrar',
+                value: false,
+            },
+            carrito: {
+                text: 'Ir a carrito',
+                value: true,
+            },
+        },
+    }).then((promesa) => {
+        if (promesa) {
+            //swal("Vamos al carrito!");
+            const myModal = new bootstrap.Modal(
+                document.getElementById('exampleModal'),
+                { keyboard: true }
+            );
+            const modalToggle = document.getElementById('toggleMyModal');
+            myModal.show(modalToggle);
+        }
+    });
+
     dibujarCarrito();
 }
 
