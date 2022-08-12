@@ -8397,6 +8397,10 @@ textarea.form-control-lg {
 .ocultar {
   display: none; }
 
+#btnBuy {
+  text-decoration: none;
+  color: #fff; }
+
 .card {
   transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1); }
   .card:hover {

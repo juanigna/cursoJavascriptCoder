@@ -88,7 +88,6 @@ function eliminarDelCarrito(libroId) {
 
     localSave();
     dibujarCarrito();
-    console.log(carrito);
 }
 
 //Dibujar Carrito
