@@ -11,12 +11,9 @@ let alertaCarrito = document.getElementById('alertCarrito');
 //EVENT LISTENER CUANDO SE CARGA TODO EL CONTENIDO
 
 document.addEventListener('DOMContentLoaded', () => {
-    if (localStorage.getItem('carrito')) {
-        carrito = JSON.parse(localStorage.getItem('carrito'));
-        dibujarCarrito();
-    } else {
-        carrito = [];
-    }
+    carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+
+    dibujarCarrito();
 });
 
 //Añado las cards con los libros que tengo
@@ -117,13 +114,17 @@ function dibujarCarrito() {
     contendorCarrito.innerHTML = '';
 
     carrito.forEach((libro) => {
+        //Destructuracion del objeto
+        const { nombre, autor, precio, cantidad, id } = libro;
+
+        //Muestro los objetos que hay en el carrito
         contendorCarrito.innerHTML += `
         <tr>
-        <td>${libro.nombre}</td>
-        <td>${libro.autor}</td>
-        <td>$${libro.precio}</td>
-        <td>x${libro.cantidad}</td>
-        <td><button class="btn btn-danger" onclick ="eliminarDelCarrito(${libro.id})"> X </button></td>
+        <td>${nombre}</td>
+        <td>${autor}</td>
+        <td>$${precio}</td>
+        <td>x${cantidad}</td>
+        <td><button class="btn btn-danger" onclick ="eliminarDelCarrito(${id})"> X </button></td>
         </tr>
                 
             `;

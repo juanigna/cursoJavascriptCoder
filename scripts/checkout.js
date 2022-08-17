@@ -13,6 +13,7 @@ function EventsListeners() {
 
 //Funciones
 
+//Funcion encargadad de validar el checkout
 function checkOut(e) {
     e.preventDefault();
     const nombre = document.getElementById('userName').value;
@@ -37,6 +38,8 @@ function checkOut(e) {
     }
 }
 
+//Funcion encargadad de mostrar la alerta
+
 function mostrarAlerta(mensaje, tipo) {
     const alerta = document.createElement('div');
     if (tipo === 'error') {
@@ -56,12 +59,16 @@ function mostrarAlerta(mensaje, tipo) {
     }, 3000);
 }
 
+//Funcion encargada de dibuajr el checkOut
 function dibujarCheck() {
     limpiarHtml(librosCheck);
     carrito.forEach((libro) => {
+        //Destructuracion
+        const { nombre, precio, cantidad } = libro;
+
         const row = document.createElement('div');
         row.classList.add('mb-3', 'libroCheck');
-        row.innerHTML = `Nombre: ${libro.nombre} Precio: ${libro.precio} Cantidad: ${libro.cantidad}`;
+        row.innerHTML = `Nombre: ${nombre} Precio: ${precio} Cantidad: ${cantidad}`;
         librosCheck.appendChild(row);
 
         totalCheck.innerText = carrito.reduce(
@@ -73,6 +80,7 @@ function dibujarCheck() {
     });
 }
 
+//Funcion encargada de limpiar el html
 function limpiarHtml(bloque) {
     while (bloque.firstChild) {
         bloque.removeChild(bloque.firstChild);
