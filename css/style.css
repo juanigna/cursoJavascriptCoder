@@ -8409,7 +8409,7 @@ textarea.form-control-lg {
 
 body {
   font-family: 'Montserrat', sans-serif;
-  background-color: aliceblue; }
+  background-color: antiquewhite !important; }
 
 .carritoAlert {
   position: fixed;
@@ -8431,10 +8431,26 @@ body {
   margin: 1em 0;
   font-size: clamp(1em, 3vw, 2em); }
 
+.main-us {
+  position: relative; }
+
 .libroCheck {
   border: 2px solid #ddd;
   border-radius: 5px;
   padding: 0.5em; }
 
+.circle {
+  width: 500px;
+  height: 500px;
+  background-color: #caa3a3;
+  border-radius: 50%;
+  position: absolute;
+  top: -250px;
+  left: -250px;
+  z-index: -1; }
+
 .modal-dialog {
   max-width: 750px !important; }
+
+.img-fluid {
+  max-height: 600px; }
