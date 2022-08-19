@@ -11,29 +11,33 @@ let alertaCarrito = document.getElementById('alertCarrito');
 //EVENT LISTENER CUANDO SE CARGA TODO EL CONTENIDO
 
 document.addEventListener('DOMContentLoaded', () => {
+    //Utilizo el operador ||
     carrito = JSON.parse(localStorage.getItem('carrito')) || [];
 
+    //Dibujo el carrito al momento de cargar la pagina
     dibujarCarrito();
 });
 
 //Añado las cards con los libros que tengo
 for (const libro of libros) {
+    //Destructuracion del objeto
+    const { img, nombre, autor, precio, id } = libro;
     let card = document.createElement('div');
     card.className =
         'card p-0 justify-content-center align-items-center text-center';
     card.innerHTML = `
-    <img src="${libro.img}" class="card-img-top" alt="...">
+    <img src="${img}" class="card-img-top" alt="...">
     <div class="card-body justify-content-center">
-        <h5 class="card-title">${libro.nombre}</h5>
-        <p class="card-text">Autor: ${libro.autor}</p>
-        <p class="card-text">Precio: $${libro.precio}</p>
-        <a id="buyBtn${libro.id}" class="btn btn-primary m-auto">Comprar!</a>
+        <h5 class="card-title">${nombre}</h5>
+        <p class="card-text">Autor: ${autor}</p>
+        <p class="card-text">Precio: $${precio}</p>
+        <a id="buyBtn${id}" class="btn btn-primary m-auto">Comprar!</a>
     </div>
     `;
     cards.appendChild(card);
-    const addBtn = document.getElementById(`buyBtn${libro.id}`);
+    const addBtn = document.getElementById(`buyBtn${id}`);
     addBtn.addEventListener('click', () => {
-        agregarCarrito(libro.id);
+        agregarCarrito(id);
         dibujarCheck();
     });
 }
@@ -101,9 +105,12 @@ function eliminarDelCarrito(libroId) {
     } else {
         carrito = carrito.filter((libro) => libro.id != libroId);
     }
-    resetValues();
 
+    //reseto los valores
+    resetValues();
+    //guardo en el localStorage
     localSave();
+    //dibujo el carrito y el checkout
     dibujarCarrito();
     dibujarCheck();
 }
@@ -115,6 +122,7 @@ function dibujarCarrito() {
 
     carrito.forEach((libro) => {
         //Destructuracion del objeto
+        console.log(libro);
         const { nombre, autor, precio, cantidad, id } = libro;
 
         //Muestro los objetos que hay en el carrito
