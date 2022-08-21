@@ -3,7 +3,8 @@ const checkModal = document.querySelector('.modal-body');
 const formulario = document.querySelector('#check-form');
 const librosCheck = document.querySelector('#libros-check');
 const totalCheck = document.querySelector('#carrito-total-check');
-
+const mailRegex =
+    /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/g;
 EventsListeners();
 
 function EventsListeners() {
@@ -19,21 +20,29 @@ function checkOut(e) {
     const nombre = document.getElementById('userName').value;
     const apellido = document.getElementById('userLastName').value;
     const pais = document.getElementById('userPais').value;
-    if (nombre == '' || apellido == '' || pais == '') {
+    const mail = document.getElementById('userMail').value;
+    if (nombre == '' || apellido == '' || pais == '' || mail == '') {
         mostrarAlerta('Todos los campos son necesarios', 'error');
         console.log('wrong');
     } else {
-        if (carrito.length > 0) {
-            mostrarAlerta('Compra con exito, muchas gracias!!!');
-            carrito.length = 0;
-            console.log(carrito);
-            resetValues();
-            dibujarCheck();
-            dibujarCarrito();
-            localSave();
-            return;
+        if (mailRegex.test(mail)) {
+            if (carrito.length > 0) {
+                mostrarAlerta('Compra con exito, muchas gracias!!!');
+                carrito.length = 0;
+                console.log(carrito);
+                resetValues();
+                dibujarCheck();
+                dibujarCarrito();
+                localSave();
+                return;
+            } else {
+                mostrarAlerta(
+                    'Debes tener productos en el carrito!!!',
+                    'error'
+                );
+            }
         } else {
-            mostrarAlerta('Debes tener productos en el carrito!!!', 'error');
+            mostrarAlerta('El email ingresado no es correcto.', 'error');
         }
     }
 }
