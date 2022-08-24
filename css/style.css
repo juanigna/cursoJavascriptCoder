@@ -8454,3 +8454,6 @@ body {
 
 .img-fluid {
   max-height: 600px; }
+
+.filtros {
+  width: 500px !important; }

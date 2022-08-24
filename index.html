@@ -256,15 +256,17 @@
                 />
             </section>
         </header>
-        <div
-            class="carritoAlert alert-success alert"
-            role="alert"
-            id="alertCarrito"
-        >
-            <h1>Agregado al carrito!</h1>
-        </div>
         <main class="main">
             <h1 class="main__title text-center">Productos!!!</h1>
+            <div
+                class="filter-container d-flex justify-content-center mt-5 mb-5"
+            >
+                <select class="form-select filtros" id="filtros">
+                    <option selected>Filtrar</option>
+                    <option value="mayor">De mayor precio a menor</option>
+                    <option value="menor">De menor precio a mayor</option>
+                </select>
+            </div>
             <div class="container">
                 <div
                     class="row row-cols-1 mb-4 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 gap-3 justify-content-center"

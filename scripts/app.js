@@ -1,4 +1,5 @@
-//Eventlisteners
+// import { dibujarCards, agregarCarrito, dibujarCarrito } from './carrito';
+
 document.addEventListener('DOMContentLoaded', () => {
     //mensaje de Inicio
     swal({
@@ -6,6 +7,8 @@ document.addEventListener('DOMContentLoaded', () => {
         button: 'A leer!',
     });
 });
+
+//funciones
 
 //FUNCION PARA ENCOTRAR EL NOMBRE DEL LIBRO
 function findName(array, nombre) {
