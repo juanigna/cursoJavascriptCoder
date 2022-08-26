@@ -20,24 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
     dibujarCarrito();
 });
 
-select.addEventListener('change', (e) => {
-    const option = e.srcElement.value;
-    fetch('../json/stock.json')
-        .then((res) => res.json())
-        .then((data) => {
-            if (option == 'menor') {
-                data.libros.sort((a, b) => {
-                    return a.precio - b.precio;
-                });
-            } else if (option == 'mayor') {
-                data.libros.sort((a, b) => {
-                    return b.precio - a.precio;
-                });
-            } else {
-                return;
-            }
-        });
-});
+function filtrar() {}
 
 //Añado las cards con los libros que tengo implementando fetch
 function dibujarCards() {
@@ -45,6 +28,26 @@ function dibujarCards() {
         .then((res) => res.json())
         .then((data) => {
             const libros = data.libros;
+
+            select.addEventListener('change', (e) => {
+                const option = e.srcElement.value;
+                if (option == 'menor') {
+                    libros.map(() => {
+                        libros.sort((a, b) => a.precio - b.precio);
+                    });
+                } else if (option == 'mayor') {
+                    libros.map(() => {
+                        libros.sort((a, b) => b.precio - a.precio);
+                    });
+                } else {
+                    return;
+                }
+                console.log(libros);
+            });
+
+            // libros.map(() => {
+            //     libros.sort((a, b) => b.precio - a.precio);
+            // });
             libros.forEach((libro) => {
                 const { img, nombre, autor, precio, id } = libro;
                 let card = document.createElement('div');
@@ -72,7 +75,6 @@ function dibujarCards() {
 
 //  Dibujo las cards
 dibujarCards();
-
 //ELIMINAR TODOS LOS ITEMS DEL CARRITO
 vaciarBtn.addEventListener('click', () => {
     carrito.length = 0;
