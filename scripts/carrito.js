@@ -29,6 +29,8 @@ function dibujarCards() {
         .then((data) => {
             const libros = data.libros;
 
+            // FILTRAR
+
             select.addEventListener('change', (e) => {
                 const option = e.srcElement.value;
                 if (option == 'menor') {
@@ -50,6 +52,7 @@ function dibujarCards() {
             // });
             libros.forEach((libro) => {
                 const { img, nombre, autor, precio, id } = libro;
+                console.log(id);
                 let card = document.createElement('div');
                 card.className =
                     'card p-0 justify-content-center align-items-center text-center';
@@ -69,6 +72,51 @@ function dibujarCards() {
                     dibujarCheck();
                 });
             });
+
+            //funcion que agrega al carrito y arroja una alerta
+
+            function agregarCarrito(libroId) {
+                const existe = carrito.some((libro) => libro.id == libroId);
+                if (existe) {
+                    const prod = carrito.map((prod) => {
+                        if (prod.id == libroId) {
+                            prod.cantidad++;
+                        }
+                    });
+                } else {
+                    const libro = libros.find((libro) => libro.id === libroId);
+                    carrito.push(libro);
+                }
+
+                swal({
+                    title: '¡Producto agregado!',
+                    text: `Agregado al carrito de compra.`,
+                    icon: 'success',
+                    buttons: {
+                        cerrar: {
+                            text: 'Cerrar',
+                            value: false,
+                        },
+                        carrito: {
+                            text: 'Ir a carrito',
+                            value: true,
+                        },
+                    },
+                }).then((promesa) => {
+                    if (promesa) {
+                        //swal("Vamos al carrito!");
+                        const myModal = new bootstrap.Modal(
+                            document.getElementById('exampleModal'),
+                            { keyboard: true }
+                        );
+                        const modalToggle =
+                            document.getElementById('toggleMyModal');
+                        myModal.show(modalToggle);
+                    }
+                });
+
+                dibujarCarrito();
+            }
         })
         .catch((err) => console.log(err));
 }
@@ -85,49 +133,6 @@ vaciarBtn.addEventListener('click', () => {
 });
 
 //FUNCIONES
-
-//funcion que agrega al carrito y arroja una alerta
-function agregarCarrito(libroId) {
-    const existe = carrito.some((libro) => libro.id == libroId);
-    if (existe) {
-        const prod = carrito.map((prod) => {
-            if (prod.id == libroId) {
-                prod.cantidad++;
-            }
-        });
-    } else {
-        const libro = libros.find((libro) => libro.id === libroId);
-        carrito.push(libro);
-    }
-
-    swal({
-        title: '¡Producto agregado!',
-        text: `Agregado al carrito de compra.`,
-        icon: 'success',
-        buttons: {
-            cerrar: {
-                text: 'Cerrar',
-                value: false,
-            },
-            carrito: {
-                text: 'Ir a carrito',
-                value: true,
-            },
-        },
-    }).then((promesa) => {
-        if (promesa) {
-            //swal("Vamos al carrito!");
-            const myModal = new bootstrap.Modal(
-                document.getElementById('exampleModal'),
-                { keyboard: true }
-            );
-            const modalToggle = document.getElementById('toggleMyModal');
-            myModal.show(modalToggle);
-        }
-    });
-
-    dibujarCarrito();
-}
 
 //FUNCION ENCARGADA DE ELIMANAR ITEM DEL CARRITO
 function eliminarDelCarrito(libroId) {
