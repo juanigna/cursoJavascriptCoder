@@ -28,6 +28,9 @@ function checkOut(e) {
         if (mailRegex.test(mail)) {
             if (carrito.length > 0) {
                 mostrarAlerta('Compra con exito, muchas gracias!!!');
+                carrito.forEach((libro) => {
+                    libro.cantidad = 1;
+                });
                 carrito.length = 0;
                 console.log(carrito);
                 resetValues();
