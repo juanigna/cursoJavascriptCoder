@@ -22,19 +22,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
 select.addEventListener('change', (e) => {
     const option = e.srcElement.value;
-    if (option == 'menor') {
-        libros.sort((a, b) => {
-            return a.precio - b.precio;
+    fetch('../json/stock.json')
+        .then((res) => res.json())
+        .then((data) => {
+            if (option == 'menor') {
+                data.libros.sort((a, b) => {
+                    return a.precio - b.precio;
+                });
+            } else if (option == 'mayor') {
+                data.libros.sort((a, b) => {
+                    return b.precio - a.precio;
+                });
+            } else {
+                return;
+            }
         });
-    } else if (option == 'mayor') {
-        libros.sort((a, b) => {
-            return b.precio - a.precio;
-        });
-    } else {
-        return;
-    }
-    cards.innerHTML = '';
-    dibujarCards();
 });
 
 //Añado las cards con los libros que tengo implementando fetch
