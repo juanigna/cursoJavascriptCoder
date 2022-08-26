@@ -37,40 +37,40 @@ select.addEventListener('change', (e) => {
     dibujarCards();
 });
 
-//Añado las cards con los libros que tengo
+//Añado las cards con los libros que tengo implementando fetch
 function dibujarCards() {
-    for (const libro of libros) {
-        //Destructuracion del objeto
-        const { img, nombre, autor, precio, id } = libro;
-        let card = document.createElement('div');
-        card.className =
-            'card p-0 justify-content-center align-items-center text-center';
-        card.innerHTML = `
-    <img src="${img}" class="card-img-top" alt="...">
-    <div class="card-body justify-content-center">
-        <h5 class="card-title">${nombre}</h5>
-        <p class="card-text">Autor: ${autor}</p>
-        <p class="card-text">Precio: $${precio}</p>
-        <a id="buyBtn${id}" class="btn btn-primary m-auto">Comprar!</a>
-    </div>
-    `;
-        cards.appendChild(card);
-        const addBtn = document.getElementById(`buyBtn${id}`);
-        addBtn.addEventListener('click', () => {
-            agregarCarrito(id);
-            dibujarCheck();
-        });
-    }
-}
-
-function recibirLibros() {
     fetch('../json/stock.json')
         .then((res) => res.json())
-        .then((data) => console.log(data))
+        .then((data) => {
+            const libros = data.libros;
+            libros.forEach((libro) => {
+                const { img, nombre, autor, precio, id } = libro;
+                let card = document.createElement('div');
+                card.className =
+                    'card p-0 justify-content-center align-items-center text-center';
+                card.innerHTML = `
+                <img src="${img}" class="card-img-top" alt="...">
+                <div class="card-body justify-content-center">
+                    <h5 class="card-title">${nombre}</h5>
+                    <p class="card-text">Autor: ${autor}</p>
+                    <p class="card-text">Precio: $${precio}</p>
+                    <a id="buyBtn${id}" class="btn btn-primary m-auto">Comprar!</a>
+                </div>
+                `;
+                cards.appendChild(card);
+                const addBtn = document.getElementById(`buyBtn${id}`);
+                addBtn.addEventListener('click', () => {
+                    agregarCarrito(id);
+                    dibujarCheck();
+                });
+            });
+            // data.forEach((libro) => {
+            //     const { img, nombre, autor, precio, id } = libro;
+            //     console.log(nombre);
+            // });
+        })
         .catch((err) => console.log(err));
 }
-
-recibirLibros();
 
 //  Dibujo las cards
 dibujarCards();
