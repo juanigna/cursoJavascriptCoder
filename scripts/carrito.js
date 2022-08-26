@@ -64,10 +64,6 @@ function dibujarCards() {
                     dibujarCheck();
                 });
             });
-            // data.forEach((libro) => {
-            //     const { img, nombre, autor, precio, id } = libro;
-            //     console.log(nombre);
-            // });
         })
         .catch((err) => console.log(err));
 }
