@@ -29,50 +29,54 @@ function dibujarCards() {
         .then((data) => {
             const libros = data.libros;
 
-            // FILTRAR
-
+            // FILTRAR USANDO PROMISES
             select.addEventListener('change', (e) => {
-                const option = e.srcElement.value;
-                if (option == 'menor') {
-                    libros.map(() => {
-                        libros.sort((a, b) => a.precio - b.precio);
-                    });
-                } else if (option == 'mayor') {
-                    libros.map(() => {
-                        libros.sort((a, b) => b.precio - a.precio);
-                    });
-                } else {
-                    return;
-                }
-                console.log(libros);
+                return new Promise((resolve, reject) => {
+                    const option = e.srcElement.value;
+                    if (option == 'menor') {
+                        libros.map(() => {
+                            resolve(libros.sort((a, b) => a.precio - b.precio));
+                        });
+                    } else if (option == 'mayor') {
+                        libros.map(() => {
+                            resolve(libros.sort((a, b) => b.precio - a.precio));
+                        });
+                    } else {
+                        resolve();
+                    }
+                }).then(() => {
+                    cards.innerHTML = '';
+                    pintarCards();
+                });
             });
 
             // libros.map(() => {
             //     libros.sort((a, b) => b.precio - a.precio);
             // });
-            libros.forEach((libro) => {
-                const { img, nombre, autor, precio, id } = libro;
-                console.log(id);
-                let card = document.createElement('div');
-                card.className =
-                    'card p-0 justify-content-center align-items-center text-center';
-                card.innerHTML = `
-                <img src="${img}" class="card-img-top" alt="...">
-                <div class="card-body justify-content-center">
-                    <h5 class="card-title">${nombre}</h5>
-                    <p class="card-text">Autor: ${autor}</p>
-                    <p class="card-text">Precio: $${precio}</p>
-                    <a id="buyBtn${id}" class="btn btn-primary m-auto">Comprar!</a>
-                </div>
-                `;
-                cards.appendChild(card);
-                const addBtn = document.getElementById(`buyBtn${id}`);
-                addBtn.addEventListener('click', () => {
-                    agregarCarrito(id);
-                    dibujarCheck();
+            function pintarCards() {
+                libros.forEach((libro) => {
+                    const { img, nombre, autor, precio, id } = libro;
+                    let card = document.createElement('div');
+                    card.className =
+                        'card p-0 justify-content-center align-items-center text-center';
+                    card.innerHTML = `
+                    <img src="${img}" class="card-img-top" alt="...">
+                    <div class="card-body justify-content-center">
+                        <h5 class="card-title">${nombre}</h5>
+                        <p class="card-text">Autor: ${autor}</p>
+                        <p class="card-text">Precio: $${precio}</p>
+                        <a id="buyBtn${id}" class="btn btn-primary m-auto">Comprar!</a>
+                    </div>
+                    `;
+                    cards.appendChild(card);
+                    const addBtn = document.getElementById(`buyBtn${id}`);
+                    addBtn.addEventListener('click', () => {
+                        agregarCarrito(id);
+                        dibujarCheck();
+                    });
                 });
-            });
-
+            }
+            pintarCards();
             //funcion que agrega al carrito y arroja una alerta
 
             function agregarCarrito(libroId) {
