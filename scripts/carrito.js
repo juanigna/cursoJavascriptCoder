@@ -62,6 +62,16 @@ function dibujarCards() {
         });
     }
 }
+
+function recibirLibros() {
+    fetch('stock.json')
+        .then((res) => res.json())
+        .then((data) => console.log(data))
+        .catch((err) => console.log(err));
+}
+
+recibirLibros();
+
 //  Dibujo las cards
 dibujarCards();
 
