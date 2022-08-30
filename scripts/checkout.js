@@ -23,7 +23,6 @@ function checkOut(e) {
     const mail = document.getElementById('userMail').value;
     if (nombre == '' || apellido == '' || pais == '' || mail == '') {
         mostrarAlerta('Todos los campos son necesarios', 'error');
-        console.log('wrong');
     } else {
         if (mailRegex.test(mail)) {
             if (carrito.length > 0) {
@@ -32,7 +31,7 @@ function checkOut(e) {
                     libro.cantidad = 1;
                 });
                 carrito.length = 0;
-                console.log(carrito);
+
                 resetValues();
                 dibujarCheck();
                 dibujarCarrito();

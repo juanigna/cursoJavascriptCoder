@@ -2,7 +2,7 @@
     "libros": [  
     {"id":1,"nombre":"El principito","precio":1200,"autor":"Antoine de Saint-Exupéry","anio":1943,"img":"./assets/el-principito.jpg","cantidad":1},
     {"id":2,"nombre":"Los ojos del perro siberiano","precio":2200,"autor":"Antonio Santa Ana","anio":1998,"img":"./assets/perro-siberiano.jpg","cantidad":1},
-    {"id":3,"nombre":"la odisea","precio":3500,"autor":"Homero","anio":1800,"img":"./assets/odisea.jpg","cantidad":1},
+    {"id":3,"nombre":"La odisea","precio":3500,"autor":"Homero","anio":1800,"img":"./assets/odisea.jpg","cantidad":1},
     {"id":4,"nombre":"1984","precio":1900,"autor":"George Orwell","anio":1949,"img":"./assets/1984.webp","cantidad":1},
     {"id":5,"nombre":"Un Mundo Feliz","precio":2100,"autor":"Aldous Huxley","anio":1932,"img":"./assets/mundo-feliz.jpg","cantidad":1},
     {"id":6,"nombre":"Fahrenheit 451","precio":3000,"autor":"Ray Bradbury","anio":1953,"img":"./assets/fahrenheit.webp","cantidad":1},
