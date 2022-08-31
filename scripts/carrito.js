@@ -20,7 +20,63 @@ document.addEventListener('DOMContentLoaded', () => {
     dibujarCarrito();
 });
 
-function filtrar() {}
+//OBJETOS
+
+class UI {
+    constructor() {}
+
+    //metodo encargado de mostrar un mensaje cuando se agrega al carrito
+    mostrarAlertaCarrito(titulo, mensaje) {
+        swal({
+            title: titulo,
+            text: mensaje,
+            icon: 'success',
+            buttons: {
+                cerrar: {
+                    text: 'Cerrar',
+                    value: false,
+                },
+                carrito: {
+                    text: 'Ir a carrito',
+                    value: true,
+                },
+            },
+        }).then((promesa) => {
+            if (promesa) {
+                //swal("Vamos al carrito!");
+                const myModal = new bootstrap.Modal(
+                    document.getElementById('exampleModal'),
+                    { keyboard: true }
+                );
+                const modalToggle = document.getElementById('toggleMyModal');
+                myModal.show(modalToggle);
+            }
+        });
+    }
+
+    //metodo encargado de mostrar una simple alerta
+    simpleAlerta(mensaje, tipo) {
+        const alerta = document.createElement('div');
+        if (tipo === 'error') {
+            alerta.textContent = mensaje;
+            alerta.classList.add('alert-danger');
+        } else {
+            alerta.textContent = mensaje;
+            alerta.classList.add('alert-success');
+            formulario.reset();
+        }
+
+        alerta.classList.add('alert');
+        formulario.appendChild(alerta);
+
+        setTimeout(() => {
+            alerta.remove();
+        }, 3000);
+    }
+}
+
+//inicializo el objeto en una varibale para poder llamarlo despues
+const ui = new UI();
 
 //Añado las cards con los libros que tengo implementando fetch
 function dibujarCards() {
@@ -28,7 +84,6 @@ function dibujarCards() {
         .then((res) => res.json())
         .then((data) => {
             const libros = data.libros;
-
             // FILTRAR USANDO PROMISES
             select.addEventListener('change', (e) => {
                 return new Promise((resolve, reject) => {
@@ -92,32 +147,11 @@ function dibujarCards() {
                     carrito.push(libro);
                 }
 
-                swal({
-                    title: '¡Producto agregado!',
-                    text: `Agregado al carrito de compra.`,
-                    icon: 'success',
-                    buttons: {
-                        cerrar: {
-                            text: 'Cerrar',
-                            value: false,
-                        },
-                        carrito: {
-                            text: 'Ir a carrito',
-                            value: true,
-                        },
-                    },
-                }).then((promesa) => {
-                    if (promesa) {
-                        //swal("Vamos al carrito!");
-                        const myModal = new bootstrap.Modal(
-                            document.getElementById('exampleModal'),
-                            { keyboard: true }
-                        );
-                        const modalToggle =
-                            document.getElementById('toggleMyModal');
-                        myModal.show(modalToggle);
-                    }
-                });
+                //Llamo al objeto ui para mostrar la alerta
+                ui.mostrarAlertaCarrito(
+                    'Producto agregado!',
+                    'Agregado al carrito de compra!!!'
+                );
 
                 dibujarCarrito();
             }
@@ -189,11 +223,6 @@ function dibujarCarrito() {
     });
 }
 
-//funcion encargada de la alerta del carrito
-function carritoAlerta() {
-    alertaCarrito.classList.add('active', 'alert');
-}
-
 //funcion encargada de guardar en el localStorage
 function localSave() {
     localStorage.setItem('carrito', JSON.stringify(carrito));
@@ -204,5 +233,9 @@ function resetValues() {
         total.innerHTML = 0;
         librosCantidad.innerText = 0;
         totalCheck.innerText = 0;
+        nombre = '';
+        apellido = '';
+        pais = ' ';
+        mail = '';
     }
 }
