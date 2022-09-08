@@ -30,6 +30,8 @@ const checkOut = (e) => {
     //valido si los inputs estan vacios
     if (nombre == '' || apellido == '' || pais == '' || mail == '') {
         ui.simpleAlerta('Todos los campos son necesarios', 'error');
+    } else if (Number(nombre) || Number(pais) || Number(apellido)) {
+        ui.simpleAlerta('Debe ingreser un dato valido', 'error');
     } else {
         //validacion del mail mediante un regex
         if (mailRegex.test(mail)) {
