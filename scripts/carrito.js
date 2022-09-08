@@ -89,12 +89,32 @@ function dibujarCards() {
                 return new Promise((resolve, reject) => {
                     const option = e.srcElement.value;
                     if (option == 'menor') {
+                        //AQUI ORDENO DEL MENOR PRECIO AL MAYOR
                         libros.map(() => {
                             resolve(libros.sort((a, b) => a.precio - b.precio));
                         });
                     } else if (option == 'mayor') {
+                        //AQUI ORDENO DE MAYOR PRECIO AL MENOR
                         libros.map(() => {
                             resolve(libros.sort((a, b) => b.precio - a.precio));
+                        });
+                    } else if (option == 'a-z') {
+                        //AQUI ORDENO ALFABETICAMENTE
+                        libros.map(() => {
+                            resolve(
+                                libros.sort((a, b) => {
+                                    return a.nombre < b.nombre;
+                                })
+                            );
+                        });
+                    } else if (option == 'z-a') {
+                        //AQUI ORDENO DE LA Z A LA A
+                        libros.map(() => {
+                            resolve(
+                                libros.sort((a, b) => {
+                                    return a.nombre > b.nombre;
+                                })
+                            );
                         });
                     } else {
                         resolve();
@@ -132,6 +152,7 @@ function dibujarCards() {
                 });
             }
             pintarCards();
+
             //funcion que agrega al carrito y arroja una alerta
 
             function agregarCarrito(libroId) {
@@ -239,3 +260,18 @@ function resetValues() {
         mail = '';
     }
 }
+
+// function AtoZ(libros) {
+//     select.addEventListener('change', (e) => {
+//         const option = e.srcElement.value;
+//         if (option == 'a-z') {
+//             libros.map(() => {
+//                 libros.sort((a, b) => a.nombre - b.nombre);
+//             });
+//             pintarCards();
+//             cards.innerHTML = '';
+//         } else {
+//             return;
+//         }
+//     });
+// }
