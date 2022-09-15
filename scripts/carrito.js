@@ -103,7 +103,13 @@ function dibujarCards() {
                         libros.map(() => {
                             resolve(
                                 libros.sort((a, b) => {
-                                    return a.nombre < b.nombre;
+                                    if (a.nombre < b.nomre) {
+                                        return -1;
+                                    }
+                                    if (a.nombre > b.nombre) {
+                                        return 1;
+                                    }
+                                    return 0;
                                 })
                             );
                         });
@@ -112,7 +118,13 @@ function dibujarCards() {
                         libros.map(() => {
                             resolve(
                                 libros.sort((a, b) => {
-                                    return a.nombre > b.nombre;
+                                    if (a.nombre > b.nomre) {
+                                        return -1;
+                                    }
+                                    if (a.nombre < b.nombre) {
+                                        return 1;
+                                    }
+                                    return 0;
                                 })
                             );
                         });
